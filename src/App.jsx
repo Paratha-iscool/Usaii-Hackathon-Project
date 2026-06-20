@@ -1,10 +1,10 @@
-
+import StartPage from "./components/StartPage";
 
 function App() {
 
   return (
     <>
-    <p>Random Paragraph</p>
+    return <LandingPage />
     </>
   )
 }
