@@ -4,7 +4,7 @@ function App() {
 
   return (
     <>
-    return <LandingPage />
+    return <StartPage />
     </>
   )
 }
