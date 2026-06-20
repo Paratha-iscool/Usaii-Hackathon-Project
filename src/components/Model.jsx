@@ -5,14 +5,12 @@ console.log(apiKey);
 
 
 const genAI = new GoogleGenAI({apiKey});
-
+const chat = genAI.chats.create({   model: "gemini-2.5-flash"   })
 
 
 export const generateContent = async (prompt) => {
 
-    const result = await genAI.models.generateContent(
-        {model: "gemini-2.5-flash",
-        contents: prompt});
+    const result = await chat.sendMessage({ message: prompt })
 
     console.log(result.text);
 
