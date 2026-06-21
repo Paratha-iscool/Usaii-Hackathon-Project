@@ -1,8 +1,7 @@
 import React, { useContext, useState } from "react";
 import {generateContent} from './Model';
 import ReactMarkdown from "react-markdown";
-
-
+import './Home.css';
 
 export default function Home({ emotion, age }) {
 
@@ -66,34 +65,71 @@ const handleKeyPress = (e) => {
 }
 
 return (
-    <div className= "chat-container">
-        {response.length === 0 ? (<h1>Need any help?</h1>) : (
-        <div className = "chat-history"> 
-            {response.map((msg, index) => (
-                <p key={index} className={`message ${msg.type}`}>
-                 <ReactMarkdown>{msg.message}</ReactMarkdown>
-                 </p>
-            ))}
-            {isLoading && <p className="loading-text">Working hard!</p>}
-        </div>
-        )}
+  <div className="chat-container">
 
-        <div className="input-container">
-            <button onClick={(handleClear)} className="clear-btn">Clear</button>
+    {response.length === 0 ? (
+      <div className="empty-state">
+        <h1>Need any help?</h1>
+        <p>Type something and I'll turn it into a plan</p>
+      </div>
+    ) : (
+      <div className="chat-history">
 
-            <input
-                type="text"
-                value={userInput}
-                onChange={handleUserInput}
-                onKeyDown={handleKeyPress}
-                placeholder="Type your message here..."
-                className="chat-input"
-            />
+  {response.map((msg, index) => (
+    <div key={index} className={`message-wrapper ${msg.type}`}>
 
-            <button onClick={handleSubmit} className="send-btn">
-            </button>
-        </div>
+      <div className="message-label">
+        {msg.type === "user" ? "You" : "☁️ StepWise ☁️"}
+      </div>
+
+      <div className={`message ${msg.type}`}>
+        <ReactMarkdown>{msg.message}</ReactMarkdown>
+      </div>
+
     </div>
-)
+  ))}
+
+    {isLoading && (
+        <div className="message-wrapper bot">
+
+        <div className="message-label">
+            ☁️ StepWise ☁️
+        </div>
+
+        <div className="message bot typing">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        </div>
+    )}
+
+    </div>
+    )}
+
+    <div className="input-container">
+
+      <button onClick={handleClear} className="clear-btn">
+        Clear
+      </button>
+
+      <input
+        type="text"
+        value={userInput}
+        onChange={handleUserInput}
+        onKeyDown={handleKeyPress}
+        placeholder="Type your message..."
+        className="chat-input"
+      />
+
+      <button onClick={handleSubmit} className="send-btn">
+        ➤
+      </button>
+
+    </div>
+
+  </div>
+);
 
 };
