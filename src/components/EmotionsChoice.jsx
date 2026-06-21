@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useState } from "react";
+import { EmotionsContext } from "./EmotionsContext";
 import { generateContent } from "./Model";
 
 function EmotionsChoice() {
