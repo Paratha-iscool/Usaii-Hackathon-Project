@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {generateContent} from './Model';
 import ReactMarkdown from "react-markdown";
 
 
+
 export default function Home() {
+
     const [userInput, setUserInput] = useState('');
     const [response, setResponse] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-
 
   const handleUserInput = (e) => {
     setUserInput(e.target.value);
