@@ -4,7 +4,7 @@ import { useState } from "react";
 
 function EmotionsChoice({ onNext }) {
     const [selectedEmotion, setselectedEmotion] = useState("")
-    const emotions = ["Scared", "Confused", "Frustrated", "Overwhelmed"]
+    const emotions = ["Scared", "Confused", "Frustrated", "Overwhelmed", "Angry", "I don't know"]
 
     const handleClick = (index) => {
         const emotion = emotions[index];
