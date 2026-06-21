@@ -11,13 +11,15 @@ const chat = genAI.chats.create({
 const CRISIS_KEYWORDS = [
   "suicide",
   "kill myself",
-  "want to die",
+  "die",
   "end my life",
   "self-harm",
+  "self harm",
+  "SH",
+  "drown",
   "hurt myself",
   "overdose",
-  "cutting",
-  "i can't go on"
+  "can't go on"
 ];
 
 export const generateContent = async (

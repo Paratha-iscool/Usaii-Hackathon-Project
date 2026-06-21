@@ -65,7 +65,7 @@ Respond with:
                     {
                         type: "bot",
                         message:
-        `🚨 This situation may require immediate support from a trusted adult, mental health professional, crisis service, or emergency services.
+        `🚨 This situation may require immediate support from a trusted adult, mental health professional, crisis service, or emergency services. Find a Helpline here:   https://findahelpline.com/
 
         Location provided: ${parsed.detectedLocation}`
                     }
