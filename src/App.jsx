@@ -1,4 +1,3 @@
-import StartPage from "./components/StartPage";
 import AgeChoice from './components/AgeChoice'
 import EmotionsChoice from './components/EmotionsChoice'
 import { useState } from 'react';
@@ -8,7 +7,6 @@ function App() {
 
   return (
     <>
-    return <StartPage />
       <EmotionsChoice></EmotionsChoice>
       <AgeChoice></AgeChoice>
       <Home></Home>
