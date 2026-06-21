@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {generateContent} from './Model';
+import ReactMarkdown from "react-markdown";
+
+
 
 export default function Home() {
+
     const [userInput, setUserInput] = useState('');
     const [response, setResponse] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-
 
   const handleUserInput = (e) => {
     setUserInput(e.target.value);
@@ -53,7 +56,7 @@ return (
         <div className = "chat-history"> 
             {response.map((msg, index) => (
                 <p key={index} className={`message ${msg.type}`}>
-                 {msg.message}
+                 <ReactMarkdown>{msg.message}</ReactMarkdown>
                  </p>
             ))}
             {isLoading && <p className="loading-text">Working hard!</p>}
