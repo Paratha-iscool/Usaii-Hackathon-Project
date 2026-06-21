@@ -1,25 +1,31 @@
-import React from "react";
-import { useState } from "react";
-import { generateContent } from "./Model";
+import React, { useState } from "react";
+import "./AgeChoice.css";
 
-function AgeChoice() {
+function AgeChoice({ onNext }) {
     const [selectedAge, setselectedAge] = useState("");
-    const ages = ["Child", "Teen", "Adult", "Elderly"]
+    const ages = ["Ages 8-12", "Ages 12-19", "Ages 20-59", "Ages 60+"];
 
     const handleClick = (index) => {
-        setselectedAge(ages[index])
-        generateContent("Additionally the user is of the age range: " + selectedAge)
-        console.log(selectedAge)
-    }
+        const age = ages[index];
+        setselectedAge(age);
+        console.log(age);
+
+        onNext(age);
+    };
+
     return (
-        <div className="AgeChoice">
-           {ages.map((age, index) => (
-                <button onClick={() => handleClick(index)} key={index}>
-                    {age}
-                </button>
-            ))}
+        <div className="AgeChoiceWrapper">
+            <h2 className="AgeChoiceQuestion">What is your age group?</h2>
+
+            <div className="AgeChoiceGrid">
+                {ages.map((age, index) => (
+                    <button onClick={() => handleClick(index)} key={index}>
+                        {age}
+                    </button>
+                ))}
+            </div>
         </div>
-    )
+    );
 }
 
 export default AgeChoice;

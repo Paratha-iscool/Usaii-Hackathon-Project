@@ -1,0 +1,75 @@
+.AgeChoiceWrapper {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 0 20px;
+  text-align: center;
+  font-family: 'Lexend', sans-serif;
+}
+
+.AgeChoiceQuestion {
+  font-size: 26px;
+  color: #3f5872;
+  margin-bottom: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.AgeChoiceGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.AgeChoiceGrid button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 110px;
+
+  background: #fffaf0; /* soft ivory */
+  color: #4e6f92;
+
+  border: none;
+  border-radius: 20px;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  transition: all 0.25s ease;
+}
+
+.AgeChoiceGrid button:hover {
+  background: #dceffd;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+.AgeChoiceGrid button:active {
+  transform: translateY(-1px);
+}
+
+.AgeChoiceGrid button.active {
+  background: #9ecff0;
+  color: white;
+}
+
+@media (max-width: 480px) {
+  .AgeChoiceGrid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .AgeChoiceGrid button {
+    min-height: 90px;
+    font-size: 16px;
+  }
+
+  .AgeChoiceQuestion {
+    font-size: 22px;
+  }
+}

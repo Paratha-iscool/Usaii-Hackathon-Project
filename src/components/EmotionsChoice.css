@@ -1,0 +1,47 @@
+.emotion-container {
+    padding: 4rem;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 2rem;
+}
+
+.emotion-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+
+    max-width: 500px;
+}
+
+.emotion-btn {
+    border: none;
+
+    background: #fffaf0;
+
+    color: #4e6f92;
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    box-shadow:
+        0 4px 12px rgba(0,0,0,0.05);
+}
+
+.emotion-btn:hover {
+    background: #dceffd;
+
+    transform: translateY(-3px);
+}
