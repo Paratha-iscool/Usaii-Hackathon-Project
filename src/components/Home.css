@@ -1,8 +1,11 @@
 .chat-container {
-  height: 100vh;
+  height: 100dvh;
   width: 100%;
   display: flex;
   flex-direction: column;
+
+  overflow: hidden;
+
   background: var(--chat-bg);
   color: var(--chat-text);
   font-family: 'Lexend', sans-serif;
@@ -30,11 +33,14 @@
 .chat-history {
   flex: 1;
   width: 100%;
-  padding: 20px 12vw;
+  padding: 20px 16px;
   overflow-y: auto;
+
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  box-sizing: border-box;
 }
 
 .message {
@@ -111,9 +117,9 @@
   background: var(--chat-panel);
   backdrop-filter: blur(10px);
   border-top: 1px solid var(--chat-border);
-  position: sticky;
+  position: relative;
   bottom: 0;
-  margin: 10px 12px 16px 12px;
+  margin: 10px;
   border-radius: 18px;
   box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
 }
@@ -168,16 +174,6 @@
   border-radius: 999px;
   padding: 8px 12px;
   cursor: pointer;
-}
-
-.chat-history {
-  flex: 1;
-  padding: 20px 20px 10px 20px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  scroll-behavior: smooth;
 }
 
 .typing {
@@ -246,4 +242,26 @@
 .back-btn:hover {
   transform: translateY(-2px);
   background: #dceffd;
+}
+
+.location-container {
+  width: auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.location-input {
+  width: 80%;
+  padding: 12px 16px;
+
+  border-radius: 16px;
+
+  border: 1px solid rgba(150, 180, 220, 0.3);
+
+  background: var(--chat-input-bg);
+
+  color: var(--chat-text);
+
+  font-size: 14px;
 }

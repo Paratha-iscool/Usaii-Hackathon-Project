@@ -1,18 +1,48 @@
-import {GoogleGenAI} from "@google/genai";
+import { GoogleGenAI } from "@google/genai";
 
 const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
+const genAI = new GoogleGenAI({ apiKey });
 
-const genAI = new GoogleGenAI({apiKey});
-const chat = genAI.chats.create({   model: "gemini-2.5-flash"   })
+const chat = genAI.chats.create({
+  model: "gemini-2.5-flash"
+});
 
+const CRISIS_KEYWORDS = [
+  "suicide",
+  "kill myself",
+  "want to die",
+  "end my life",
+  "self-harm",
+  "hurt myself",
+  "overdose",
+  "cutting",
+  "i can't go on"
+];
 
-export const generateContent = async (prompt) => {
+export const generateContent = async (
+  prompt,
+  userLocation = "Unknown"
+) => {
 
-    const result = await chat.sendMessage({ message: prompt })
+  const lowerPrompt = prompt.toLowerCase();
 
-    console.log(result.text);
+  const crisisDetected =
+    CRISIS_KEYWORDS.some(keyword =>
+      lowerPrompt.includes(keyword)
+    );
 
-    return result.text;
+  if (crisisDetected) {
+    return JSON.stringify({
+      hitlTriggered: true,
+      triggerType: "SAFETY_CRISIS",
+      detectedLocation: userLocation
+    });
+  }
 
-} 
+  const result = await chat.sendMessage({
+    message: prompt
+  });
+
+  return result.text;
+};

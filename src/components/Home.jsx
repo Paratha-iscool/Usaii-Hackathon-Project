@@ -8,6 +8,7 @@ export default function Home({ emotion, age }) {
     const [userInput, setUserInput] = useState('');
     const [response, setResponse] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [location, setLocation] = useState("");
 
   const handleUserInput = (e) => {
     setUserInput(e.target.value);
@@ -20,6 +21,10 @@ export default function Home({ emotion, age }) {
   };
 
 const handleSubmit = async () => {
+    if (!location.trim()) {
+      alert("Please enter your location first.");
+      return;
+    }
     if (!userInput.trim()) return;
     if (!emotion || !age) return;
 
@@ -40,7 +45,39 @@ Respond with:
 3. What Happens If You Don't
         `;
 
-        const res = await generateContent(prompt);
+        const res = await generateContent(
+            prompt,
+            location
+        );
+
+        try {
+
+            const parsed = JSON.parse(res);
+
+            if (parsed.hitlTriggered) {
+
+                setResponse(prev => [
+                    ...prev,
+                    {
+                        type: "user",
+                        message: userInput
+                    },
+                    {
+                        type: "bot",
+                        message:
+        `🚨 This situation may require immediate support from a trusted adult, mental health professional, crisis service, or emergency services.
+
+        Location provided: ${parsed.detectedLocation}`
+                    }
+                ]);
+
+                setUserInput("");
+                return;
+            }
+
+        } catch {
+
+        }
 
         setResponse(prev => [
             ...prev,
@@ -107,6 +144,16 @@ return (
 
     </div>
     )}
+
+    <div className="location-container">
+      <input
+        type="text"
+        value={location}
+        onChange={(e) => setLocation(e.target.value)}
+        placeholder="Enter your country or city..."
+        className="location-input"
+      />
+    </div>
 
     <div className="input-container">
 
